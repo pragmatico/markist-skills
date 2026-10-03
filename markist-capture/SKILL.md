@@ -59,6 +59,10 @@ protocol):
    read-later flag, and no exists-override — the tool's own default already skips a
    duplicate rather than creating a second copy. Only pass the override when the user
    explicitly said something like "save it again" for a link already in the library.
+   Saving is capped at 30 links a minute per account. If a call comes back "Too many
+   bookmarks added", stop calling `add_bookmark` for the rest of the batch, and in the
+   report list the links that weren't saved yet. Offer to save them in a minute; do it only
+   if the user says yes again.
 4. **Report per item**, grouped by outcome: e.g. "3 saved, 1 already in your library" —
    then list every link under its outcome. Report the **url**, never a guessed title:
    title and summary are generated asynchronously after saving (a few seconds), so the
