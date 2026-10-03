@@ -1,0 +1,42 @@
+name: Skills Release
+
+# Runs in the public pragmatico/markist-skills repo, which receives this folder
+# from the private monorepo's sync workflow. A bare `vX.Y.Z` tag pushed there
+# zips every skill (folder contents at the zip root, which is what Claude.ai's
+# skill upload expects) and attaches the zips to a GitHub Release.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package skills
+        run: |
+          mkdir -p dist
+          found=0
+          for dir in */; do
+            name="${dir%/}"
+            case "$name" in _*) continue ;; esac
+            [ -f "$name/SKILL.md" ] || continue
+            (cd "$name" && zip -r "../dist/$name.zip" . -x 'evals/*')
+            found=1
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "No <name>/SKILL.md found -- nothing to release." >&2
+            exit 1
+          fi
+          ls -l dist
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.zip --title "$GITHUB_REF_NAME" --generate-notes
