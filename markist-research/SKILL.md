@@ -14,7 +14,7 @@ account on its own. See `references/tools.md` for the exact per-tool inputs/outp
 
 - **Not connected.** If no `search_bookmarks` tool exists (bare, or prefixed by the
   client, e.g. `mcp__markist__search_bookmarks`), say so and tell the user to connect:
-  `claude mcp add --transport http markist https://markist.xyz/api/mcp`, then `/mcp`. On
+  `claude mcp add --transport http markist https://www.markist.xyz/api/mcp`, then `/mcp`. On
   Claude.ai it's Settings → Connectors. Then stop — never fall back to a web search or to
   scraping; an answer here has to come from *this user's* bookmarks.
 - **Scope denied.** A tool call that comes back with "wasn't granted markist:…" is

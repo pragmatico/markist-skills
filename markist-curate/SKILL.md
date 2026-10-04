@@ -14,7 +14,7 @@ notes — from the user's own library, on a topic they name. See
 
 - **Not connected.** If no `search_bookmarks` tool exists (bare, or client-prefixed, e.g.
   `mcp__markist__search_bookmarks`), tell the user to connect:
-  `claude mcp add --transport http markist https://markist.xyz/api/mcp`, then `/mcp`. On
+  `claude mcp add --transport http markist https://www.markist.xyz/api/mcp`, then `/mcp`. On
   Claude.ai it's Settings → Connectors. Then stop.
 - **Scope denied.** A tool call that comes back "wasn't granted markist:…" is relayed
   as-is with its reconnect hint. Don't retry it.

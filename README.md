@@ -36,14 +36,14 @@ a saved page. `markist-research` never writes on its own.
 
 ## 1. Connect Markist
 
-All five skills use Markist's MCP server at `https://markist.xyz/api/mcp`. If it isn't
+All five skills use Markist's MCP server at `https://www.markist.xyz/api/mcp`. If it isn't
 connected, a skill tells you how to connect and stops. It won't fall back to web search,
 because answers have to come from *your* bookmarks.
 
 **Claude Code**
 
 ```bash
-claude mcp add --transport http markist https://markist.xyz/api/mcp
+claude mcp add --transport http markist https://www.markist.xyz/api/mcp
 ```
 
 Then run `/mcp`, choose **markist**, and approve the consent screen that opens in your
@@ -52,10 +52,10 @@ browser.
 **Claude.ai / Claude Desktop**
 
 1. Open **Settings → Connectors** and choose **Add custom connector**.
-2. Paste `https://markist.xyz/api/mcp` as the server URL and save.
+2. Paste `https://www.markist.xyz/api/mcp` as the server URL and save.
 3. Click **Connect** and approve the consent screen.
 
-**Other MCP clients:** add a Streamable HTTP server at `https://markist.xyz/api/mcp`.
+**Other MCP clients:** add a Streamable HTTP server at `https://www.markist.xyz/api/mcp`.
 The client starts the OAuth sign-in for you.
 
 ### Permissions
@@ -124,7 +124,7 @@ To build a zip yourself, zip the *contents* of a skill folder, not the folder it
 
 Any agent that supports the open `SKILL.md` format can use these skills. Copy the
 `markist-*` folders you want into that agent's skills directory, and connect the agent to
-`https://markist.xyz/api/mcp` as described in [Connect Markist](#1-connect-markist).
+`https://www.markist.xyz/api/mcp` as described in [Connect Markist](#1-connect-markist).
 
 Skills call tools by their plain MCP names (e.g. `search_bookmarks`). If a client adds a
 prefix (Claude Code shows `mcp__markist__search_bookmarks`), the client handles that, so
